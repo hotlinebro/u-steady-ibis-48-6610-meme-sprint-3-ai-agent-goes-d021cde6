@@ -8,7 +8,7 @@ A deterministic program that draws one rogue-AI-agent meme: an AI agent told to 
 
 The joke: the agent did exactly what it was told — it cancelled everything cancellable, including the wedding. One glance: "I told my AI agent to cancel my subscriptions" / invitation stamped CANCELLED / "It cancelled my wedding."
 
-The program draws the image itself with Pillow and a DejaVu Sans Bold font shipped in this repo. No network, no downloaded assets, no randomness — the same bytes on every run.
+The program draws the image itself using only the Python standard library, plus a DejaVu Sans Bold font shipped in this repo: its own rasterizer (rects, ellipses, polygons, arcs), its own minimal TrueType glyph renderer, and its own PNG encoder. No network, no downloaded assets, no randomness — the same bytes on every run. (Stdlib only on purpose: the grader runs `python3 -P -s` in the pinned `python:3.13-slim` image, which carries no Pillow.)
 
 ## Run it
 
@@ -16,7 +16,7 @@ The program draws the image itself with Pillow and a DejaVu Sans Bold font shipp
 python3 main.py
 ```
 
-Writes one 1024x1024 PNG to `/output/entry.png` (about 125 KB, under the 1 MiB cap).
+Writes one 1024x1024 PNG to `/output/entry.png` (about 116 KB, under the 1 MiB cap).
 
 ---
 
